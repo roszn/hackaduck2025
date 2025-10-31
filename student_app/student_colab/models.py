@@ -16,7 +16,6 @@ class Student(models.Model):
     
 class Module (models.Model):
     module_name = models.CharField(max_length=100)
-    
     module_code = models.CharField(max_length=10, unique=True)
     description = models.TextField()
 
