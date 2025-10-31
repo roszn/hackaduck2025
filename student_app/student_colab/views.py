@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Student
-
 def get_user_input(request):
     if request.method == 'POST':
         # Get the user input from the form
