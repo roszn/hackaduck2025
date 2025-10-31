@@ -3,11 +3,11 @@ from django.db import models
 class Student(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
-<<<<<<< HEAD
+
     coureses = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
     enrollment_date = models.DateField()
-=======
+
     goal = models.CharField(max_length=100, blank=True)
     email = models.EmailField(unique=True)
     stu_year = models.DateField()
@@ -19,8 +19,7 @@ class Student(models.Model):
 class Module (models.Model):
     module_name = models.CharField(max_length=100)
     module_code = models.CharField(max_length=10, unique=True)
-    description = models.TextField()
->>>>>>> 3acf5cfe946606ae718da517462e257cee0fb593
+
 
     def __str__(self):
         return f"{self.module_code}  {self.module_name}"
