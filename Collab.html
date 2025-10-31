@@ -6,120 +6,42 @@
   <meta name="description" content="Homepage with About Us and Contact Us sections" />
   <title>COLLAB | Home</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Segoe UI", Arial, sans-serif;
-    }
+ <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+>
 
-    body {
-      background-color: #f8f9fb;
-      color: #333;
-      line-height: 1.6;
-    }
-
-    header {
-      background: #1a237e;
-      color: #fff;
-      padding: 20px 0;
-      text-align: center;
-    }
-    header{
-      background-color:#1a237e;
-      color:#333;
-      line-height: 1.6;
-    }
-
-    header h1 {
-    color: #fff;
-    font-family: "Courier New", Courier, monospace;
-      margin-bottom: 8px;
-      font-size: 2.2rem;
-      letter-spacing: 1px;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      margin-top: 10px;
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      transition: 0.3s;
-    }
-
-    nav a:hover {
-      color: #c5cae9;
-    }
-
-    main {
-      padding: 50px 20px;
-      text-align: center;
-    }
-
-    section {
-      max-width: 900px;
-      margin: 0 auto 60px;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      padding: 40px 30px;
-    }
-
-    section h2 {
-      font-size: 1.8rem;
-      color: #1a237e;
-      margin-bottom: 15px;
-    }
-
-    section p {
-      font-size: 1.05rem;
-      color: #444;
-      margin-bottom: 15px;
-    }
-
-    #contact p a {
-      color: #1a237e;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    #contact p a:hover {
-      text-decoration: underline;
-    }
-
-    footer {
-      background: #1a237e;
-      color: #fff;
-      text-align: center;
-      padding: 15px;
-      font-size: 0.9rem;
-    }
-  </style>
+<style>
+  nav {
+   
+    text-align:center;
+    grid: space-evenly;
+    padding: 10px;
+  }
+</style>
 </head>
 
-<body>
-  <header>
-    <h1>collab.</h1>
-    <nav>
+<body >
+  
+  <div class="container">
+ <h1>collab.</h1> 
+  </div>
+   <div class="container">
+ <nav >
       <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About Us</a></li>
         <li><a href="#contact">Contact Us</a></li>
       </ul>
     </nav>
-  </header>
+   </div>
+   
+ 
 
-  <main>
+  <main class="container">
     <section id="home">
-  <h2>Welcome to COLLAB</h2>
+      <article>
+ <h2>Welcome to COLLAB</h2>
   <p>
     We are a peer-to-peer platform that helps university students connect seamlessly through shared modules and interests.
     Our mission is to foster collaboration, peer learning, support, and motivation among students in STEM fields.
@@ -134,6 +56,8 @@
     </a>
   </div>
 </section>
+      </article>
+ 
 
 
     <section id="about">
