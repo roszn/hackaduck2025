@@ -1,16 +1,123 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Collabo | Sign Up</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Profile — My App</title>
+
+  <!-- Poppins font (same as your original CSS expectation) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Your existing stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
- 
+  
+  <main class="auth-container" aria-labelledby="profile-title">
+    
+    <h1 id="profile-title">Your Profile</h1>
 
-  <script src="script.js"></script>
+    <!-- Avatar / image upload -->
+    <div style="display:flex;flex-direction:column;align-items:center;margin-bottom:12px;">
+      <img id="avatarPreview"
+           src="https://via.placeholder.com/150"
+           alt="Profile avatar"
+           style="width:110px;height:110px;border-radius:999px;object-fit:cover;border:3px solid rgba(0,13,255,0.08);margin-bottom:10px;">
+      <label for="avatarInput" style="font-size:14px;cursor:pointer;">
+        <input id="avatarInput" type="file" accept="image/*" style="display:none;">
+        <button type="button" id="changeAvatarBtn" style="width:auto;padding:8px 12px;border-radius:8px;background:#eee;color:#000;border:1px solid #ccc;cursor:pointer;">
+          Change avatar
+        </button>
+      </label>
+    </div>
+
+    <!-- Profile fields -->
+    <input id="fullName" type="text" value="Mwenya Lubunda Chibwe" disabled aria-label="Full name">
+    <input id="email" type="email" value="mwenyamail877@gmail.com" disabled aria-label="Email address">
+    <input id="phone" type="tel" value="07887070086" disabled aria-label="Phone number">
+    <input id="location" type="text" value="Nottingham, UK" disabled aria-label="Location">
+
+    <div class="divider">Account actions</div>
+
+    <button id="editBtn" type="button">Edit profile</button>
+    <button id="saveBtn" type="button" style="display:none;margin-top:10px;">Save changes</button>
+
+    <!-- Google connect uses your existing google-btn class -->
+    <button id="googleConnect" type="button" class="google-btn">Connect with Google</button>
+
+    <button id="logoutBtn" type="button" style="background:#fff;color:#000;border:1px solid #ccc;margin-top:10px;">
+      Log out
+    </button>
+
+    <p style="font-size:12px;color:#666;margin-top:12px;">Pro tip: click <strong>Edit profile</strong> to update fields.</p>
+  </main>
+
+  <script>
+    // DOM refs
+    const editBtn = document.getElementById('editBtn');
+    const saveBtn = document.getElementById('saveBtn');
+    const inputs = [
+      document.getElementById('fullName'),
+      document.getElementById('email'),
+      document.getElementById('phone'),
+      document.getElementById('location')
+    ];
+    const avatarInput = document.getElementById('avatarInput');
+    const avatarPreview = document.getElementById('avatarPreview');
+    const changeAvatarBtn = document.getElementById('changeAvatarBtn');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const googleConnect = document.getElementById('googleConnect');
+
+    // Toggle edit mode
+    editBtn.addEventListener('click', () => {
+      inputs.forEach(i => i.disabled = false);
+      editBtn.style.display = 'none';
+      saveBtn.style.display = 'block';
+      inputs[0].focus();
+    });
+
+    // Save mock behaviour (enable -> disable)
+    saveBtn.addEventListener('click', () => {
+      // You'd normally send data to server here via fetch/XHR
+      inputs.forEach(i => i.disabled = true);
+      saveBtn.style.display = 'none';
+      editBtn.style.display = 'block';
+      // quick UI confirmation (small flash)
+      saveBtn.textContent = 'Saved!';
+      setTimeout(() => saveBtn.textContent = 'Save changes', 1200);
+    });
+
+    // Avatar change flow: clicking change button opens file dialog
+    changeAvatarBtn.addEventListener('click', () => avatarInput.click());
+
+    avatarInput.addEventListener('change', (ev) => {
+      const file = ev.target.files && ev.target.files[0];
+      if (!file) return;
+      // Quick client-side preview
+      const reader = new FileReader();
+      reader.onload = e => avatarPreview.src = e.target.result;
+      reader.readAsDataURL(file);
+    });
+
+    // Logout mock
+    logoutBtn.addEventListener('click', () => {
+      // Replace with your real sign-out flow
+      alert('You have been logged out (demo).');
+      // window.location.href = '/login';
+    });
+
+    // Google connect mock
+    googleConnect.addEventListener('click', () => {
+      // Hook this to your OAuth flow
+      alert('Trigger Google OAuth flow (demo).');
+    });
+
+    // Accessibility: allow Enter to toggle edit/save when focused
+    [editBtn, saveBtn].forEach(btn => {
+      btn.addEventListener('keyup', (e) => {
+        if (e.key === 'Enter') btn.click();
+      });
+    });
+  </script>
 </body>
 </html>
-
-
