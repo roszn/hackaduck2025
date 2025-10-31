@@ -6,7 +6,9 @@
 <body>
     <form method="POST">
         {% csrf_token %}
-        <input type="text" name="user_firstname" placeholder="Enter your first name">
+        <input type="text" name="first_name" placeholder="Enter your first name" required>
+        <input type="text" name="last_name" placeholder="Enter your last name" required>
+        <input type="text" name="student_id" placeholder="Enter your student ID" required>
         <button type="submit">Submit</button>
     </form>
 </body>
