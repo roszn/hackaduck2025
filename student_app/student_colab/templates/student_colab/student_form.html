@@ -1,0 +1,76 @@
+{% extends 'student_colab/base.html%} 
+
+{% block content %}
+<div class="form-container">
+    <h2>Student Registration</h2>
+    
+    <form method="POST">
+        {% csrf_token %}
+        
+        {% for field in form %}
+        <div class="form-group">
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+            {% if field.errors %}
+            <div class="error-message">
+                {{ field.errors }}
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+        
+        <button type="submit" class="submit-button">Register</button>
+    </form>
+</div>
+
+ <script>
+    function addModule() {
+        const modulesDiv = document.getElementById('modules');
+        const moduleCount = modulesDiv.children.length + 1;
+        const newInput = document.createElement('input');
+        newInput.type = 'text';
+        newInput.name = 'modules';
+        newInput.placeholder = `Enter module ${moduleCount}`;
+        modulesDiv.appendChild(newInput);
+    }
+</script>
+
+<style>
+    .form-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    
+    .form-group {
+        margin-bottom: 15px;
+    }
+    
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    
+    input, select, textarea {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    
+    .submit-button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    .error-message {
+        color: red;
+        font-size: 0.8em;
+        margin-top: 5px;
+    }
+</style>
+{% endblock %}
