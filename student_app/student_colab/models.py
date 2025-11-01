@@ -5,11 +5,11 @@ class Student(models.Model):
     last_name = models.CharField(max_length=30)
     student_id = models.CharField(max_length=15, unique=True)
     password = models.CharField(max_length=128)
-    coureses = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
     goals = models.CharField(max_length=100, blank=True)
     stu_year = models.DateField()
     module = models.ForeignKey('Module', on_delete=models.CASCADE)
+    courses = models.CharField(max_length=100)
     
     def __str__(self):
         return f"{self.first_name} {self.last_name}"

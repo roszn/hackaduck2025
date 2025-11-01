@@ -20,7 +20,7 @@ class StudentForm(forms.ModelForm):
     )
     class Meta:
         model = Student
-        fields = ['first_name', 'last_name', 'student_id', 'password', 'course', 'email', 'goals', 'stu_year', 'modules']
+        fields = ['first_name', 'last_name', 'student_id', 'password', 'courses', 'email', 'goals', 'stu_year', 'module']
         widgets = {
             'password': forms.PasswordInput(),
             'stu_year': forms.DateInput(attrs={'type': 'date'}),
