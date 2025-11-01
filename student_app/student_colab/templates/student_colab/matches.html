@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Matches</title>
+</head>
+<body>
+    <h1>Matches for {{ student.first_name }} {{ student.last_name }}</h1>
+    
+    {% if matches %}
+        <h2>Students with shared modules:</h2>
+        {% for match in matches %}
+            <div style="border: 1px solid #ccc; padding: 10px; margin: 10px 0;">
+                <h3>{{ match.student.first_name }} {{ match.student.last_name }}</h3>
+                <p>Student ID: {{ match.student.student_id }}</p>
+                <p>Course: {{ match.student.course }}</p>
+                <p>Shared modules:</p>
+                <ul>
+                    {% for module in match.shared_modules %}
+                        <li>{{ module.module_name }} ({{ module.module_code }})</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No matches found.</p>
+    {% endif %}
+</body>
+</html>
