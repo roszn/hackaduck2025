@@ -25,14 +25,15 @@ class ModuleAdmin(admin.ModelAdmin):
         })
     ]
     
-class StuMatchAdmin(admin.ModelAdmin):
+class StuMatchAdmin(admin.ModelAdmin): # pyright: ignore[reportMissingTypeArgument]
     list_display = ('student1', 'student2', 'module', 'status', 'created_at')
     search_fields = ('student1__first_name', 'student1__last_name', 'student2__first_name', 'student2__last_name', 'module__module_code')
     search_fields = ('student1__first_name', 'student1__last_name', 'student2__first_name', 'student2__last_name')
     list_filter = ('status', 'module')
     
-
+"""
 admin.site.register(Student, StudentAdmin)
 admin.site.register(Module, ModuleAdmin)
 admin.site.register(stu_match, StuMatchAdmin)
 admin.site.register(stu_match, StuMatchAdmin)
+"""

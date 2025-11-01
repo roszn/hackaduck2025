@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Student
+
 def get_user_input(request):
     if request.method == 'POST':
         # Get the user input from the form
@@ -13,4 +14,10 @@ def get_user_input(request):
     return render(request, 'student_colab/input_form.html')
 
 def home(request):
-    return HttpResponse("Welcome to the Student Collaboration Home Page!")
+    return render(request, "student_colab/home.html")
+
+def sign_in(request):
+    return render(request, "student_colab/login.html")
+
+def profile(request):
+    return render(request, "student_colab/profile.html")
